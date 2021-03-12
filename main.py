@@ -20,12 +20,13 @@ class Maze():
     def __str__(self):  # this allows to call print on Maze object and it's readable
         return "{self.maze} ".format(self=self)
 
-    def __getitem__(self,maze):
+    def __getitem__(self, maze):
         return self.maze
 
-#helper method
+
+# helper method
 def valid_square(sol_maze, x, y):
-    if x >= 0 and x < N and y >= 0 and sol_maze[x][y] == 0:
+    if x >= 0 and x < N and y >= 0 and y < N and sol_maze[x][y] == 0:
         return True
 
     return False
@@ -81,6 +82,7 @@ def main():
     print()
 
     solve_maze(zero_maze, maze, STARTX, STARTY)
+
 
 if __name__ == "__main__":
     main()
