@@ -2,15 +2,12 @@ import numpy as np
 
 #constants
 N = 5
+STARTX = 0
+STARTY = 0
 GOALX = N - 1
 GOALY = N - 1
 
 class Maze():
-    """
-     Initializing properties of Maze.
-     Maze: Generating maze using NUmpy with abritrary dim and obstacle density p.
-     Start, End: Sets the starting and ending location to be true.
-    """
 
     def __init__(self, dim, p):
         self.maze = np.random.choice(a=[1, 0], size=(dim, dim), p=[p, 1 - p])
@@ -32,8 +29,9 @@ def valid_square(sol_maze, x, y):
 
 def solve_maze(zero_maze, sol_maze, x, y): #zero_maze is all zeroes. sol_maze has ones and zeroes
     #x and y are (0, 0) to represent the start of the board
-    #if x and y are N-1, that's the goal
 
+
+    # if x and y are N-1, that's the goal and return true
     if x == GOALX and y == GOALY and sol_maze[x][y] == 0:
         zero_maze[x][y] = 1
         return True
